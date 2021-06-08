@@ -20,7 +20,7 @@ pycm generate-key
 ```
 
 Follow the instructions printed to the console. For example, if you're setting up a production configuration,
-make a file called `.env-production` in the root of your django project. Inside of it, save the key generated
+make a file called `.env-production` in the root of your project. Inside of it, save the key generated
 above to a variable called `ENC_KEY`.
 
 ### Upsert a secret
@@ -71,54 +71,39 @@ If you do not provide a key, a new one will be generated for you.
 
 ## Extras
 
-In the root of your django project, you can create a file called `config-required.json`.
+In the root of your project, you can create a file called `config-required.json`.
 
 The JSON object can be a list or a dictionary. This is useful for validating the presence of your
 keys on start-up.
 
-## Settings
+# Using the config in your python code
 
-There are two ways to use this library, if you don't mind a little magic, you can
-simply inject the config by importing the following function in your django settings file,
-and passing in the current module.
+There are two ways to use this library. You can either have a dotenv file with your `ENC_KEY`,
+or you can place the `ENC_KEY` in your environment variables. If you use a dotenv, make sure
+the file follows this naming scheme: `.env-[environment]`.
+
+As for accessing the config, if you don't mind a little magic, you can use `inject_config`.
 
 ```python
 # settings.py
-from django_configuration_management import inject_config
+from python_configuration_management import inject_config
 
 # development is the environment name
-inject_config("development", sys.modules[__name__])
+inject_config("development", sys.modules[__name__], use_dotenv=True)
 ```
-
-See the example project for a demonstration of this.
 
 If you want more verbosity, you can import the following function which will return
 the config as a normalized dictionary that's flat and has all secrets decrypted.
 
 ```python
 # settings.py
-from django_configuration_management import get_config
+from python_configuration_management import get_config
 
 # config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted}
-config = get_config("development")
+config = get_config("development", use_dotenv=True)
 
 USERNAME = config["USERNAME"]
 # ...
-```
-
-### Using without a .env
-
-If you want to skip using the .env, you can set the optional argument `dotenv_required` to `False`
-when invoking either of the above two methods. Doing so means it then becomes your responsibility
-to load an environment variable called `ENC_KEY` that stores the relevant encryption key for the
-stage you're trying to load.
-
-```python
-# settings.py
-from django_configuration_management import get_config
-
-# Will error out if you didn't load ENC_KEY correctly
-config = get_config("development", dotenv_required=False)
 ```
 
 ---

@@ -14,7 +14,7 @@ def test_yml_to_dict():
 
 
 def test_get_config():
-    config = get_config("test")
+    config = get_config("test", use_dotenv=True)
     assert config == {
         "PASSWORD": "123password",
         "USERNAME": "testusername",
