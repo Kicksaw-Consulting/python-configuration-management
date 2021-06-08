@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 
 
 from python_configuration_management.secrets import decrypt_value, encrypt_value
-from python_configuration_management.yml_utils import validate_key_name
 
 
 def load_env(environment: str):
@@ -22,11 +21,7 @@ def load_env(environment: str):
 
 def gather_user_input():
     key_name = input("Enter key name: ")
-
-    validate_key_name(key_name)
-
     key_value = getpass("Enter key value: ")
-
     return key_name, encrypt_value(key_value)
 
 

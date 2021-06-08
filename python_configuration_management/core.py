@@ -1,6 +1,3 @@
-import os
-from typing import Callable
-
 from python_configuration_management.utils import (
     load_env,
     normalize_config_data,
@@ -15,10 +12,10 @@ def get_config(environment: str, dotenv_required=True):
         if dotenv_required:
             raise error
 
-    local_secrets = yml_to_dict(environment)
-    normalized_local_secrets = normalize_config_data(local_secrets)
+    config = yml_to_dict(environment)
+    normalized_config = normalize_config_data(config)
 
-    return {**normalized_local_secrets}
+    return {**normalized_config}
 
 
 def inject_config(environment: str, settings_module, dotenv_required=True):
