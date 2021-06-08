@@ -1,6 +1,4 @@
 import click
-import os
-import json
 
 from python_configuration_management.secrets import (
     decrypt_value,
