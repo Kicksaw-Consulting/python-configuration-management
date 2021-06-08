@@ -3,7 +3,6 @@ from pathlib import Path
 
 from python_configuration_management.validation_utils import (
     read_required_vars_file,
-    validate_key_name,
 )
 
 
@@ -12,7 +11,6 @@ def _validate_yml(data, skip_required_checks=False):
         _check_required_keys(data)
 
     for key, meta in data.items():
-        validate_key_name(key)
         if type(meta) == dict:
             secret = meta.get("secret")
             if secret is not None:
