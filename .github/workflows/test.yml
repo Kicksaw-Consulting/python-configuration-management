@@ -21,6 +21,8 @@ jobs:
       - name: Pytest
         run: |
           cd tests && poetry run pytest
+        env:
+          ENC_KEY: ${{ secrets.ENC_KEY }}
       - name: Slack Notifications
         uses: Kicksaw-Consulting/notify-slack-action@master
         if: always()
@@ -29,3 +31,4 @@ jobs:
           notify_when: "failure"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          STAGE: "test"
