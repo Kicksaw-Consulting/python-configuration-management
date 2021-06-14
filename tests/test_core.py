@@ -19,3 +19,10 @@ def test_get_config():
         "PASSWORD": "123password",
         "USERNAME": "testusername",
     }
+
+
+def test_get_secretless_config():
+    config = get_config("test-secretless", use_secrets=False)
+    assert config == {
+        "USERNAME": "testusername",
+    }
