@@ -1,7 +1,7 @@
 import yaml
 from pathlib import Path
 
-from python_configuration_management.validation_utils import (
+from pycm.validation_utils import (
     read_required_vars_file,
 )
 

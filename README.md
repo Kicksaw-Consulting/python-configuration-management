@@ -86,7 +86,7 @@ As for accessing the config, if you don't mind a little magic, you can use `inje
 
 ```python
 # settings.py
-from python_configuration_management import inject_config
+from pycm import inject_config
 
 # development is the environment name
 inject_config("development", sys.modules[__name__], use_dotenv=True)
@@ -97,7 +97,7 @@ the config as a normalized dictionary that's flat and has all secrets decrypted.
 
 ```python
 # settings.py
-from python_configuration_management import get_config
+from pycm import get_config
 
 # config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted}
 config = get_config("development", use_dotenv=True)

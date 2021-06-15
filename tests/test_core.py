@@ -1,5 +1,5 @@
-from python_configuration_management import get_config
-from python_configuration_management.yml_utils import yml_to_dict
+from pycm import get_config
+from pycm.yml_utils import yml_to_dict
 
 
 def test_yml_to_dict():

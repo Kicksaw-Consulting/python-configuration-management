@@ -5,7 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-from python_configuration_management.secrets import decrypt_value, encrypt_value
+from pycm.secrets import decrypt_value, encrypt_value
 
 
 def load_env(environment: str):

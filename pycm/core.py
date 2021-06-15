@@ -1,10 +1,10 @@
 import os
 
-from python_configuration_management.utils import (
+from pycm.utils import (
     load_env,
     normalize_config_data,
 )
-from python_configuration_management.yml_utils import yml_to_dict
+from pycm.yml_utils import yml_to_dict
 
 
 def get_config(environment: str, use_dotenv=False, use_secrets=True):
@@ -20,7 +20,9 @@ def get_config(environment: str, use_dotenv=False, use_secrets=True):
     return {**normalized_config}
 
 
-def inject_config(environment: str, settings_module, use_dotenv=False, use_secrets=True):
+def inject_config(
+    environment: str, settings_module, use_dotenv=False, use_secrets=True
+):
     config = get_config(environment, use_dotenv=use_dotenv, use_secrets=use_secrets)
 
     for key, value in config.items():

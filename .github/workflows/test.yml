@@ -20,7 +20,7 @@ jobs:
           poetry install
       - name: Pytest
         run: |
-          cd tests && poetry run pytest
+          poetry run pytest
         env:
           ENC_KEY: ${{ secrets.ENC_KEY }}
       - name: Slack Notifications
