@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "python_configuration_management"
-version = "1.0.1"
+name = "python-configuration-management"
+version = "2.0.0"
 description = "A merge conflict-less solution to committing an encrypted configuration to the repo with secrets and non-secrets side-by-side."
 license = "MIT"
 readme = "README.md"
@@ -8,7 +8,7 @@ repository = "https://github.com/Kicksaw-Consulting/python-configuration-managem
 authors = ["Alex Drozd <alex@kicksaw.com>", "Tim Sabat <tim@kicksaw.com>", "Austin Burke <austin@kicksaw.com>"]
 keywords = ["config", "secrets", "settings"]
 packages = [
-    { include = "python_configuration_management" }
+    { include = "pycm" }
 ]
 
 [tool.poetry.dependencies]
@@ -27,4 +27,4 @@ requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry.scripts]
-pycm = 'python_configuration_management.cli:pycm'
+pycm = 'pycm.cli:pycm'

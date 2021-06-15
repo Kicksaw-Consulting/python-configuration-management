@@ -1,12 +1,12 @@
 import click
 
-from python_configuration_management.secrets import (
+from pycm.secrets import (
     decrypt_value,
     encrypt_value,
     generate_fernet_key,
 )
-from python_configuration_management.utils import gather_user_input, load_env
-from python_configuration_management.yml_utils import dict_to_yml, yml_to_dict
+from pycm.utils import gather_user_input, load_env
+from pycm.yml_utils import dict_to_yml, yml_to_dict
 
 
 @click.group(chain=True)
