@@ -11,8 +11,7 @@ def get_config(environment: str, use_dotenv=False, use_secrets=True):
     if use_secrets:
         if use_dotenv:
             load_env(environment)
-        else:
-            assert os.getenv("ENC_KEY"), "ENC_KEY not present in environment variables"
+        assert os.getenv("ENC_KEY"), "ENC_KEY not present in environment variables"
 
     config = yml_to_dict(environment)
     normalized_config = normalize_config_data(config)
