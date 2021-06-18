@@ -1,9 +1,13 @@
 import yaml
+
+from logging import getLogger
 from pathlib import Path
 
 from pycm.validation_utils import (
     read_required_vars_file,
 )
+
+logger = getLogger(__name__)
 
 
 def _validate_yml(data, skip_required_checks=False):
@@ -45,6 +49,9 @@ def yml_to_dict(environment: str, skip_required_checks=False):
         config_file = Path(f"config-{environment}.yaml")
     elif Path(f"config-{environment}.yml").exists():
         config_file = Path(f"config-{environment}.yml")
+
+    if not config_file:
+        logger.warning(f"No file found for config-{environment}.yml|yaml")
 
     try:
         with open(config_file, "r") as yml:
