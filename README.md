@@ -106,6 +106,11 @@ USERNAME = config["USERNAME"]
 # ...
 ```
 
+## Advanced usage
+
+All file paths within the libary are relative to root by default. To changes this
+behaviour, set an environment variable called `PYCM_ROOT`.
+
 ---
 
 This project uses [poetry](https://python-poetry.org/) for dependency management

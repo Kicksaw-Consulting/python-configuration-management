@@ -3,6 +3,7 @@ import yaml
 from logging import getLogger
 from pathlib import Path
 
+from pycm.root import PYCM_ROOT
 from pycm.validation_utils import (
     read_required_vars_file,
 )
@@ -45,10 +46,14 @@ def _check_required_keys(data):
 
 def yml_to_dict(environment: str, skip_required_checks=False):
     config_file = ""
-    if Path(f"config-{environment}.yaml").exists():
-        config_file = Path(f"config-{environment}.yaml")
-    elif Path(f"config-{environment}.yml").exists():
-        config_file = Path(f"config-{environment}.yml")
+
+    yaml_file = Path(PYCM_ROOT) / f"config-{environment}.yaml"
+    yml_file = Path(PYCM_ROOT) / f"config-{environment}.yml"
+
+    if yaml_file.exists():
+        config_file = yaml_file
+    elif yml_file.exists():
+        config_file = yml_file
 
     if not config_file:
         logger.warning(f"No file found for config-{environment}.yml|yaml")

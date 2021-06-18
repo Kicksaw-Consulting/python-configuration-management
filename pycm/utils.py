@@ -4,12 +4,12 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-
+from pycm.root import PYCM_ROOT
 from pycm.secrets import decrypt_value, encrypt_value
 
 
 def load_env(environment: str):
-    env_path = Path(".") / f".env-{environment}"
+    env_path = Path(PYCM_ROOT) / f".env-{environment}"
     if os.path.isfile(env_path):
         load_dotenv(dotenv_path=env_path, verbose=True)
         return
