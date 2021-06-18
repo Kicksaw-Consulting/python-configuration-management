@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-configuration-management"
-version = "2.0.2"
+version = "2.0.3"
 description = "A merge conflict-less solution to committing an encrypted configuration to the repo with secrets and non-secrets side-by-side."
 license = "MIT"
 readme = "README.md"
