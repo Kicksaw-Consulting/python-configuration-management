@@ -110,8 +110,8 @@ USERNAME = config["USERNAME"]
 
 All file paths within the libary are relative to root by default. To change this
 behaviour, set an environment variable called `PYCM_ROOT` which stores the relative
-path to the root of your project (where you `.env-[environment]` and `config-[environment].yml`
-files are stored.
+path to the root of your project (where your `.env-[environment]` and `config-[environment].yml`
+files are stored).
 
 ---
 
