@@ -25,10 +25,12 @@ def gather_user_input():
     return key_name, encrypt_value(key_value)
 
 
-def normalize_config_data(data: dict):
+def normalize_config_data(data: dict, use_secrets: bool):
     normalized = dict()
     for key, meta in data.items():
         if type(meta) == dict:
+            if not use_secrets:
+                continue
             value = meta["value"]
             normalized[key] = decrypt_value(value)
         else:

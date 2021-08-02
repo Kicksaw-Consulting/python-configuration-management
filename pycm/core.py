@@ -14,7 +14,7 @@ def get_config(environment: str, use_dotenv=False, use_secrets=True):
         assert os.getenv("ENC_KEY"), "ENC_KEY not present in environment variables"
 
     config = yml_to_dict(environment)
-    normalized_config = normalize_config_data(config)
+    normalized_config = normalize_config_data(config, use_secrets)
 
     return {**normalized_config}
 
