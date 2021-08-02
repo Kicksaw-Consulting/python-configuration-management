@@ -22,7 +22,7 @@ def test_get_config():
 
 
 def test_get_secretless_config():
-    config = get_config("test-secretless", use_secrets=False)
+    config = get_config("test", use_secrets=False)
     assert config == {
         "USERNAME": "testusername",
     }
