@@ -9,14 +9,14 @@ from pycm.secrets import decrypt_value, encrypt_value
 
 
 def load_env(environment: str):
+    """
+    Attempts to load environment variables from a .env file, if it exists
+
+    Exits silently if not
+    """
     env_path = Path(PYCM_ROOT) / f".env-{environment}"
     if os.path.isfile(env_path):
         load_dotenv(dotenv_path=env_path, verbose=True)
-        return
-
-    raise AssertionError(
-        f"env not found: {env_path}. This file is required and must contain your ENC_KEY"
-    )
 
 
 def gather_user_input():

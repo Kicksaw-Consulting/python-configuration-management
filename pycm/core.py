@@ -7,10 +7,11 @@ from pycm.utils import (
 from pycm.yml_utils import yml_to_dict
 
 
-def get_config(environment: str, use_dotenv=False, use_secrets=True):
+def get_config(environment: str, use_secrets=True):
+    load_env(environment)
+
+    # If we're using secrets, we need an encryption key
     if use_secrets:
-        if use_dotenv:
-            load_env(environment)
         assert os.getenv("ENC_KEY"), "ENC_KEY not present in environment variables"
 
     config = yml_to_dict(environment)
@@ -19,10 +20,8 @@ def get_config(environment: str, use_dotenv=False, use_secrets=True):
     return {**normalized_config}
 
 
-def inject_config(
-    environment: str, settings_module, use_dotenv=False, use_secrets=True
-):
-    config = get_config(environment, use_dotenv=use_dotenv, use_secrets=use_secrets)
+def inject_config(environment: str, settings_module, use_secrets=True):
+    config = get_config(environment, use_secrets=use_secrets)
 
     for key, value in config.items():
         setattr(settings_module, key, value)
