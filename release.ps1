@@ -1,4 +1,4 @@
-poetry version patch
+poetry version $args[0]
 
 git add pyproject.toml
 
