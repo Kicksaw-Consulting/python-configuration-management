@@ -89,7 +89,7 @@ As for accessing the config, if you don't mind a little magic, you can use `inje
 from pycm import inject_config
 
 # development is the environment name
-inject_config("development", sys.modules[__name__], use_dotenv=True)
+inject_config("development", sys.modules[__name__])
 ```
 
 If you want more verbosity, you can import the following function which will return
@@ -100,7 +100,7 @@ the config as a normalized dictionary that's flat and has all secrets decrypted.
 from pycm import get_config
 
 # config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted}
-config = get_config("development", use_dotenv=True)
+config = get_config("development")
 
 USERNAME = config["USERNAME"]
 # ...
