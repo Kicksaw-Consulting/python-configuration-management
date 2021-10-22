@@ -99,7 +99,7 @@ the config as a normalized dictionary that's flat and has all secrets decrypted.
 # settings.py
 from pycm import get_config
 
-# config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted}
+# config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted"}
 config = get_config("development")
 
 USERNAME = config["USERNAME"]
