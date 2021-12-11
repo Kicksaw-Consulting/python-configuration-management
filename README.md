@@ -109,9 +109,25 @@ USERNAME = pycm.config["USERNAME"]
 ## Advanced usage
 
 All file paths within the libary are relative to root by default. To change this
-behaviour, set an environment variable called `PYCM_ROOT` which stores the relative
+behaviour, pass a path object to the argument `pycm_root` that contains the
 path to the root of your project (where your `.env-[environment]` and `config-[environment].yml`
 files are stored).
+
+To make this independent of where the script is run from, look at the tests
+for `test_get_config_weird_root`. Here, an example of constructing a path independent
+of where the script is run from is provided.
+
+```python
+def test_get_config_weird_root():
+    # this test will pass when run from the root of this repo, or from the `tests` folder
+    pycm_root = Path(os.path.dirname(os.path.abspath(__file__)))
+    pycm = PYCM("nested", use_secrets=False, pycm_root=pycm_root)
+    assert pycm.config == {
+        "PASSWORD": "idk",
+        "USERNAME": "testusername",
+    }
+```
+
 
 ## Running tests
 
