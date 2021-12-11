@@ -113,6 +113,16 @@ behaviour, set an environment variable called `PYCM_ROOT` which stores the relat
 path to the root of your project (where your `.env-[environment]` and `config-[environment].yml`
 files are stored).
 
+## Running tests
+
+You'll need the following encryption key to run tests
+
+```
+rj10mXFq-JTDlsSa-5GxYzcx4KAF6TQpXWcl1LLbUTU=
+```
+
+This belongs either in your environment variables under `ENC_KEY` or in `.env-test`.
+
 ---
 
 This project uses [poetry](https://python-poetry.org/) for dependency management
