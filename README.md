@@ -86,10 +86,11 @@ As for accessing the config, if you don't mind a little magic, you can use `inje
 
 ```python
 # settings.py
-from pycm import inject_config
+from pycm import PYCM
 
 # development is the environment name
-inject_config("development", sys.modules[__name__])
+pycm = PYCM("development")
+pycm.inject_config(sys.modules[__name__])
 ```
 
 If you want more verbosity, you can import the following function which will return
@@ -97,12 +98,11 @@ the config as a normalized dictionary that's flat and has all secrets decrypted.
 
 ```python
 # settings.py
-from pycm import get_config
+from pycm import PYCM
 
-# config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted"}
-config = get_config("development")
-
-USERNAME = config["USERNAME"]
+pycm = PYCM("development")
+# pycm.config = {"USERNAME": "helloworld", "PASSWORD": "im decrypted"}
+USERNAME = pycm.config["USERNAME"]
 # ...
 ```
 
